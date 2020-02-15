@@ -14,7 +14,7 @@ export default class TodoLogic extends Component {
     
 
   componentDidMount() {
-    axios.get('http://localhost:3001/todos')
+    axios.get('http://localhost:3001/todos?_limit=50')
       .then(res => this.setState({ todos: res.data }) )
 
   }
