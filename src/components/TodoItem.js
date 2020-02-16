@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class TodoItem extends Component {
     checkBoxStyle = () => {
@@ -23,24 +24,42 @@ export default class TodoItem extends Component {
                     onChange={this.props.markComplete.bind(this, id)}
                 />
                 <p style={{ titleStyle }}> {title}</p>
-                <button
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent:'space-between'
+                    }}
+                >
+                    <Link to={`/edit/${id}`} >
+                        <button
+                    style={{
+                    background: 'blue',
+                    color: 'white',
+                    border: 'none',
+                    padding: '5px 5px',
+                    borderRadius: '15%',
+                    fontSize: '20px',
+                    cursor: 'pointer'
+                }}>Edit</button>
+                    </Link>
+                    
+                    <button
                     onClick={this.props.deleteTodo.bind(this,id)}
                     style={{
                     background: 'red',
                     color: 'white',
                     border: 'none',
-                    padding: '5px 10px',
-                    borderRadius: '50%',
+                    padding: '5px 5px',
+                    borderRadius: '15%',
+                    fontSize: '20px',
                     cursor: 'pointer'
-                }}>x</button>
+                    }}>delete</button>
+                </div>
+                
             </div>
         )
     }
 }
-
-// const divStyle = {
-//     display: 'flex'
-// }
 
 const titleStyle = {
     marginRight: '10px'
